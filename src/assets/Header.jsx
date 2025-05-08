@@ -115,12 +115,16 @@ export default function Header({editdata,toggleTheme,showTheme,showdash,baseUrl}
         </button>
         </li>
         <li>
-        {/* <Link to={`/showuser/${ btoa(editdata.userid)}`} > */}
-        <div className="flex items-center mx-3 cursor-pointer" onClick={() => showdash(2)}>
-               <img src={`${baseUrl}${editdata.image}`} alt="" height="40px" width="50px" className='rounded' />
-               <h1 className=" uppercase mr-4 text-gray-700 group-hover:text-gray-500 dark:text-white">{editdata.name}</h1>
+        {/* <Link to={`/showuser/${ btoa(editdata.userid)}`} > */} 
+        {editdata.image !== undefined && (
 
-        </div>
+            <div className="flex items-center mx-3 cursor-pointer" onClick={() => showdash(2)}>
+            <img src={`${baseUrl}${editdata.image}`} alt="" height="40px" width="50px" className='rounded' />
+            <h1 className=" uppercase mr-4 text-gray-700 group-hover:text-gray-500 dark:text-white">{editdata.name}</h1>
+
+            </div>
+        )}
+
           {/* </Link>     */}
         </li>
         <li>

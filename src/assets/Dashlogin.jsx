@@ -46,11 +46,7 @@ export default function Login() {
      }
      
      const handleChangeFile = (e) =>{
-      console.log( e.target.files[0])
-      // setImg({
-      //   "image": e.target.files[0], // store the file object
-        
-      // });
+      
       setFields({...fields, image: e.target.files[0]})
 
      }
@@ -145,7 +141,7 @@ export default function Login() {
                                          // console.log(data)
                                           if(data.result.length >0) {
                   
-                                                  console.log(data)
+                                               //   console.log(data)
                                            // setUserdatadateail(data.result)
                                             //setIsOpen(false);
                                             toast.warn("Name or Email already exist !", {
@@ -196,14 +192,14 @@ export default function Login() {
                                        
                                      })
                                      .catch(error => {
-                                       console.log(error);
+                                    //   console.log(error);
                                      });
 
                                          }
 
                                         })
                                         .catch(error => {
-                                          console.log(error);
+                                        //  console.log(error);
                                           toast.warn("Error Occured !", {
                                             position: "top-center",
                                             closeOnClick: false,
@@ -274,7 +270,7 @@ export default function Login() {
                         
                       })
                       .catch(error => {
-                        console.log(error);
+                      //  console.log(error);
                       });
          }
         

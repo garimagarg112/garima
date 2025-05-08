@@ -140,7 +140,7 @@ export default function Dashboard() {
    { isshowdash == 3  && (
 
      <div className="chartmrgn  h-full ml-20 mr-10  mb-10 md:ml-20 md:mr-10">
-    <User  userdata={userdata}   showTheme={showTheme} isshowdash={isshowdash} baseUrl={baseUrl} key="user" />
+    <User  userdata={userdata}   showTheme={showTheme} isshowdash={isshowdash} baseUrl={baseUrl} showdash={showdash} key="user" />
      </div>
    )}
    

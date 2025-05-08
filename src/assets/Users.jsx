@@ -9,7 +9,7 @@ import Modal from 'react-modal';
 import { IoMdClose } from "react-icons/io";
 import { fetchAllUser,getUserData } from "../redux/DashboardSlice.jsx";
 
-export default function Users({userdata,showTheme,isshowdash,baseUrl}) {    
+export default function Users({showTheme,isshowdash,baseUrl,showdash}) {    
  //  console.log(" h     "+productList)
      let [rowsLimit] = useState(2);
       const [productList,setProductList] = useState([])
@@ -174,7 +174,7 @@ export default function Users({userdata,showTheme,isshowdash,baseUrl}) {
         <div className="text-left mt-4 ">
         <div className="bg-white rounded flex items-center w-full max-w-xl mr-4 p-2 shadow-sm border border-gray-200">
           <button className="outline-none focus:outline-none bg-transparent">
-            <svg className="w-5 text-gray-600 h-5 cursor-pointer" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 text-gray-600 h-5 cursor-pointer" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"  viewBox="0 0 24 24">
               <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>
               <input type="search" name="" id="" placeholder="Search" onChange={search}  className="w-full pl-3 text-sm text-black outline-none focus:outline-none bg-transparent" />
               
@@ -185,7 +185,7 @@ export default function Users({userdata,showTheme,isshowdash,baseUrl}) {
           </div>
 
 
-          <div className="w-full overflow-x-scroll md:overflow-auto  max-w-7xl 2xl:max-w-none mt-2">
+          <div className="w-full overflow-x-scroll md:overflow-auto  max-w-7xl 2xl:max-w-none mt-2" >
             <table className="table-auto overflow-scroll md:overflow-auto w-full  font-inter  ">
               <thead className="rounded-lg text-base text-white font-semibold w-full">
                 <tr className="text-xs font-semibold tracking-wide text-center text-gray-500 uppercase  dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
@@ -200,11 +200,11 @@ export default function Users({userdata,showTheme,isshowdash,baseUrl}) {
                   <th className="py-3 px-3  justify-center gap-1  whitespace-nowrap">
                   phone
                   </th>
-                 
+                {  isshowdash === 3 && ( 
                   <th className="py-3 px-3 justify-center gap-1  whitespace-nowrap">
                   Action
                   </th>
-                  
+                )}
                 </tr>
   
                       
@@ -240,15 +240,18 @@ export default function Users({userdata,showTheme,isshowdash,baseUrl}) {
                     >
                       {data['phone']}
                     </td>
-                   
+                   { isshowdash === 3 && (
+
                     <td
                       className={`py-5 px-4 text-base  font-normal  "border-t"
                       }`}
                     >
                         
-                                      <button onClick={()=>Viewuser(data['_id'])} className="px-4 py-2 mx-3 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100"> View </button>
+                      <button onClick={()=>Viewuser(data['_id'])} className="px-4 py-2 mx-3 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100"> View </button>
                                      
                     </td>
+                   )}
+                    
                   </tr>
                   // }
                 

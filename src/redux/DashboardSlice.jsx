@@ -279,17 +279,7 @@ const dashboardSlice = createSlice({
         })
         //console.log(payload)
     },
-    Updatedata: (state, action) =>{
 
-    },
-    complete:(state,action) =>{
-
-         
-    },
-    submit:(state,action) =>{
-  
-
-    },
 
     
   },

@@ -505,7 +505,7 @@ export default function TaskManagement({productListnw,showTheme,userdata,setUser
                    </li>
                    {customPagination?.map((data, index) => (
                      <li
-                       className={`flex items-center justify-center w-[36px] rounded-[6px] h-[34px] border-[1px] border-solid border-[2px] bg-[#FFFFFF] cursor-pointer ${
+                       className={`flex items-center justify-center w-[36px] rounded-[6px] h-[34px] border-[1px] border-solid bg-[#FFFFFF] cursor-pointer ${
                          currentPage == index
                            ? "text-blue-600  border-sky-500"
                            : "border-[#E4E4EB]  dark:border-gray-700 dark:bg-gray-800 dark:text-white"
