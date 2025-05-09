@@ -11,7 +11,7 @@ import { getawholetask,fetchtaskdata,fetchTaskUser,delTask } from "../redux/Dash
 
 export default function TaskManagement({productListnw,showTheme,userdata,setUserdata}) {
   let sessnname = sessionStorage.getItem("name");
-  console.log(sessnname)
+ // console.log(sessnname)
   const taskUrl = import.meta.env.VITE_Task_Url;
 
   const [productList,setProductList] = useState(productListnw)
@@ -45,7 +45,10 @@ export default function TaskManagement({productListnw,showTheme,userdata,setUser
                 
                 setProductList(datavar.taskall)  // for showing first graph no of post for every user
                 setRowsToShow(datavar.taskall.slice(0, rowsLimit))
-                setTotalpage(Math.ceil(productList?.length / rowsLimit)) 
+                setTotalpage(Math.ceil(datavar.taskall?.length / rowsLimit)) 
+                setCustomPagination(
+                  Array(Math.ceil(datavar.taskall?.length / rowsLimit)).fill(null)
+                );
               },[datavar.taskall])
 
 
@@ -113,12 +116,7 @@ export default function TaskManagement({productListnw,showTheme,userdata,setUser
                          setCurrentPage(0);
                        }
                      };
-                     useMemo(() => {
-                       setCustomPagination(
-                         Array(Math.ceil(productList?.length / rowsLimit)).fill(null)
-                       );
-                     }, []);
-
+                    
                      const [modalIsOpen, setIsOpen] = useState(false);
 
                      function openModal() {
@@ -304,7 +302,7 @@ export default function TaskManagement({productListnw,showTheme,userdata,setUser
                         
                       })
                       .catch(error => {
-                        console.log(error);
+                      //  console.log(error);
                       });
                          setIsOpen(false);
                          setShowAll(0);
@@ -333,7 +331,7 @@ export default function TaskManagement({productListnw,showTheme,userdata,setUser
     
                           .then((response) =>  response.json())
                           .then((data) => {
-                            console.log(data);
+                          //  console.log(data);
                             if(data.result) {
                                 setUserTaskdata(data.result)
                               //  setUserdateail(data.result[0])
@@ -342,7 +340,7 @@ export default function TaskManagement({productListnw,showTheme,userdata,setUser
                             
                           })
                           .catch(error => {
-                            console.log(error);
+                           // console.log(error);
                           });
                              setIsOpen(false);
                              setShowAll(0);
@@ -543,9 +541,9 @@ export default function TaskManagement({productListnw,showTheme,userdata,setUser
              
               <div className="text-left mt-4 ">
               { sessnname === 'admin' && (
-              <select name="muldel"   id="user"   onChange={muldel}  autoComplete="off"  className=" py-3 px-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 dark:text-gray-50 font-semibold focus:border-blue-500 focus:outline-none" >
+              <select name="muldel" value=""  id="user"   onChange={muldel}  autoComplete="off"  className=" py-3 px-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 dark:text-gray-50 font-semibold focus:border-blue-500 focus:outline-none" >
                 
-                <option defaultValue="" selected   >Select Task</option>
+                <option value=""   >Select Task</option>
                   <option value="delete"  >Delete Task</option>
                   </select>
 
@@ -699,9 +697,9 @@ export default function TaskManagement({productListnw,showTheme,userdata,setUser
 
             <div className="flex flex-col mt-2">
               <label htmlFor="status" className="hidden">Status: <span className="homelogformspan">*</span></label>
-              <select name="index"  value={fields["index"]}  id="user"   onChange={handleChnage}  autoComplete="off"    required  className="w-100 mt-2 py-3 px-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 dark:text-gray-50 font-semibold focus:border-blue-500 focus:outline-none" >
+              <select name="index" id="user"   onChange={handleChnage}  autoComplete="off"    required  className="w-100 mt-2 py-3 px-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 dark:text-gray-50 font-semibold focus:border-blue-500 focus:outline-none" >
           
-            <option defaultValue=""  selected disabled  >Select User</option>
+            <option value=""  >Select User</option>
               {userdata.map( (e,i) =>  <option value={e._id} key={i} >{e.name.toUpperCase()}</option> )}
               </select>
               <div className="name1 errortext" id="validname">{errors["user"]}  </div>

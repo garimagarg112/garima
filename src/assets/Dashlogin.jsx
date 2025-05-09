@@ -13,7 +13,13 @@ export default function Login() {
      const [userdata,setUserdata] = useState([])
      let navigate = useNavigate();
      const [isloginshow, setIsloginshow] = useState(0);
-     const [fields, setFields] = useState({})   
+     const [fields, setFields] = useState({
+      name:'',
+      image:'',
+      email:'',
+      phone:'',
+      pass:''
+     })   
      const [img, setImg] = useState({})   
      const [errors, setErrors] = useState({});
      let formErrors = {};

@@ -174,7 +174,7 @@ export default function Users({showTheme,isshowdash,baseUrl,showdash}) {
         <div className="text-left mt-4 ">
         <div className="bg-white rounded flex items-center w-full max-w-xl mr-4 p-2 shadow-sm border border-gray-200">
           <button className="outline-none focus:outline-none bg-transparent">
-            <svg className="w-5 text-gray-600 h-5 cursor-pointer" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"  viewBox="0 0 24 24">
+            <svg className="w-5 text-gray-600 h-5 cursor-pointer" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" stroke="currentColor" viewBox="0 0 24 24">
               <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>
               <input type="search" name="" id="" placeholder="Search" onChange={search}  className="w-full pl-3 text-sm text-black outline-none focus:outline-none bg-transparent" />
               

@@ -32,16 +32,29 @@ export default function ShowUser({baseUrl}) {
     const [latstpost,setLatstpost] = useState([])
     const [allpost,setAllpost] = useState([])
   const[showTheme,setShowTheme] = useState(true)
-  const [fields, setFields] = useState({})   
-  const [postfields, setPostfields] = useState({})   
-  const [postfieldsedit, setPostfieldsedit] = useState({})   
+  const [fields, setFields] = useState({})  
+  
+  
+  const [postfields, setPostfields] = useState({
+    name : '',
+    desc : '',
+    image : ''
+  })   
+
+
+  const [postfieldsedit, setPostfieldsedit] = useState({
+    'name' : '',
+    'desc' : '',
+    'image' : '',
+    '_id' : '' ,
+    
+  })   
      const [errors, setErrors] = useState({});
-     const [imgedt, setImage] = useState({});
+     const [imgedt, setImage] = useState('');
 
      const[editpost,setEditpost] = useState(0)
      let formErrors = {};
-     let formFields = {...fields}
-     let formIsValid = true;
+   
 
 
 const customStyles = {
@@ -111,9 +124,19 @@ const[isshowsecuser,setIsshowsecuser] = useState(0)
            setIsOpen(true);
           }
           useEffect(() =>{
-              console.log(datavar.allpostid)
-              setPostfieldsedit(datavar.allpostid)
+            //  console.log(datavar.allpostid)
+            if (datavar.allpostid && datavar.allpostid.name !== undefined) {
+           let newobj =  {
+              'name' : datavar.allpostid.name,
+              'desc' : datavar.allpostid.desc,
+              'image' : datavar.allpostid.image,
+              '_id' : datavar.allpostid._id ,
+              
+            }
+            
+              setPostfieldsedit(newobj)
               setImage(datavar.allpostid.image)
+          }
           },[datavar.allpostid])
        
           const openpostedit = (id) =>{
@@ -211,8 +234,6 @@ const[isshowsecuser,setIsshowsecuser] = useState(0)
     
       const handlesubmit = (event) => {
         event.preventDefault();
-        let formIsValid = true;
-        let isloginshow = 0
         let skilarr = Array.from(event.target.skills.selectedOptions, option => option.value);
         let langarr = Array.from(event.target.languge.selectedOptions, option => option.value);
        // formFields["skills"] =skilarr
@@ -260,7 +281,7 @@ const[isshowsecuser,setIsshowsecuser] = useState(0)
                } 
 
                const handleChangeFilePostedit = (e) =>{
-                console.log(e.target.files[0])
+              //  console.log(e.target.files[0])
                 setPostfieldsedit({...postfieldsedit, "image": e.target.files[0]})
           
                } 
@@ -279,6 +300,16 @@ const[isshowsecuser,setIsshowsecuser] = useState(0)
             // console.log(newobj)
               dispatch(delpostdsh(payload));
             }
+            const handleSkillsChange = (e) => {
+              const selected = Array.from(e.target.selectedOptions, (option) => option.value);
+              setSkills(selected); // update state accordingly
+            };
+            
+            const handleLanguageChange = (e) => {
+              const selected = Array.from(e.target.selectedOptions, (option) => option.value);
+              setLang(selected); // update state accordingly
+            };
+
   return (
     <>
     
@@ -296,7 +327,7 @@ const[isshowsecuser,setIsshowsecuser] = useState(0)
            
                             <div className="flex items-center mx-3 relative">
                                
-                                    <div className=''>
+                                    <div className='py-2 px-2'>
                                     <img src={`${baseUrl}${editdata.image}`} alt="" height="100px" width="80px" className='rounded-[100%] ' />
                                         
                                
@@ -321,12 +352,16 @@ const[isshowsecuser,setIsshowsecuser] = useState(0)
                                       <div className=''>
                                             <h1 className='text-blue-600 dark:text-white my-3 mx-5'>Today Highlights</h1>   
                    
-                                        <div className=' my-3 mx-5'>
-                                            <img src={`${baseUrl}${latstpost[0]["image"]}`} className='imgpost' alt="" />
-                                        </div>
-                                        <h4 className='text-gray-600 dark:text-white my-3 mx-5 font-bold text-2xl'>{ latstpost[0].name}</h4>
-                                        <p className='text-gray-400 dark:text-white my-3 mx-5'>{ latstpost[0].desc}</p>
-                                        </div>
+                                    <div className='my-3 mrgn' >
+                                      <div className='dashitem p-3'>
+                                            <div className=' my-3 mx-5'>
+                                                <img src={`${baseUrl}${latstpost[0]["image"]}`} className='imgpost' alt="" />
+                                            </div>
+                                            <h4 className='text-gray-600 dark:text-white my-3 mx-5 font-bold text-2xl'>{ latstpost[0].name}</h4>
+                                            <p className='text-gray-400 dark:text-white my-3 mx-5'>{ latstpost[0].desc}</p>
+                                            </div>
+                                          </div>
+                                        </div>  
                      ) }
                     { 
                     allpost.length > 0 && (
@@ -341,7 +376,8 @@ const[isshowsecuser,setIsshowsecuser] = useState(0)
                                 
                                  
                                 {   allpost.map((pst,i) => (
-                                        <div className='my-5'  key={i}>
+                                      <div className='my-3 mrgn'  key={i}>
+                                          <div className='dashitem p-3'>
                                             <div className=' my-3 mx-5'>
                                                 <img src={`${baseUrl}${pst["image"]}`}  className='imgpost' alt="" />
                                             </div>
@@ -351,6 +387,7 @@ const[isshowsecuser,setIsshowsecuser] = useState(0)
                                                       <button className= 'rounded py-2 px-4 text-white mx-6 bg-blue-600 dark:text-white border-gray-400 hover:bg-blue-500 flex' ><span className='mt-1 mr-1'><FaHeart /></span><span className=''>Like</span></button>
                                                       <button   className='rounded py-2 px-4 text-whitemx-6 bg-[#2c3e65]  dark:text-white border-gray-400 hover:bg-[#304165] flex'  ><span className='mt-1 mr-1'><TiArrowBack /></span><span className=''>Reply</span></button>
                                               </div> */}
+                                        </div>
                                         </div>
     
                                       )) }
@@ -403,7 +440,8 @@ const[isshowsecuser,setIsshowsecuser] = useState(0)
                                  //   editdata.post.length > 0 && (
                                  
                                   latstpost.map((pst,i) => (
-                                        <div className='my-5'  key={i}>
+                                        <div className='my-3 mrgn'  key={i}>
+                                          <div className='dashitem p-3'>
                                             <div className=' my-3 mx-5'>
                                                 <img src={`${baseUrl}${pst["image"]}`}  className='imgpost' alt="" />
                                             </div>
@@ -416,6 +454,7 @@ const[isshowsecuser,setIsshowsecuser] = useState(0)
                                                 {/* <button  className='rounded py-2 px-4 text-whitemx-6 bg-[#2c3e65]  dark:text-white border-gray-400 hover:bg-[#304165] flex'  ><span className='mt-1 mr-1'><TiArrowBack /></span><span className=''>Reply</span></button>
                                                */}
                                               </div>
+                                           </div>   
                                         </div>
     
                                       ))
@@ -502,22 +541,22 @@ const[isshowsecuser,setIsshowsecuser] = useState(0)
                                                    
                                                        <label className="block mt-3 font-semibold">Skills</label>
     
-                                                       <select name="skills" id="cars"   className="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-indigo-500 focus:ring-1 rounded-md" multiple required>
-                                                          <option defaultValue="Admin" selected={skills.includes('Admin')}>Admin</option>
-                                                          <option defaultValue="Dashboard" selected={skills.includes('Dashboard')} >Dashboard</option>
-                                                          <option defaultValue="Photoshop" selected={skills.includes('Photoshop')}>Photoshop</option>
-                                                         <option defaultValue="Bootstrap"  selected={skills.includes('Bootstrap')}>Bootstrap</option>
-                                                          <option defaultValue="Responsive"selected={skills.includes('Responsive')} >Resposive</option>
-                                                         <option defaultValue="Crypto" selected={skills.includes('Crypto')}>Crypto</option>
+                                                       <select name="skills" id="cars"  value={skills}  onChange={handleSkillsChange}   className="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-indigo-500 focus:ring-1 rounded-md" multiple required>
+                                                          <option value="Admin" >Admin</option>
+                                                          <option value="Dashboard"  >Dashboard</option>
+                                                          <option value="Photoshop" >Photoshop</option>
+                                                         <option value="Bootstrap" >Bootstrap</option>
+                                                          <option value="Responsive" >Resposive</option>
+                                                         <option value="Crypto">Crypto</option>
                                                       </select>
                                                       <div className="name1 errortext text-red-600" id="validname"> {errors["skills"]}  </div>
                                   
                                                       <label className="block mt-3 font-semibold">Language</label>
                                   
-                                                      <select name="languge" id="cars"   className="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-indigo-500 focus:ring-1 rounded-md" multiple required>
-                                                      <option defaultValue="English"  selected={lang.includes('English')}>English</option>
-                                                      <option defaultValue="Hindi" selected={lang.includes('Hindi')}>Hindi</option>
-                                                      <option defaultValue="French" selected={lang.includes('French')}>French</option>
+                                                      <select name="languge" id="cars1"  value={lang}  onChange={handleLanguageChange }  className="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-indigo-500 focus:ring-1 rounded-md" multiple required>
+                                                      <option value="English" >English</option>
+                                                      <option value="Hindi" >Hindi</option>
+                                                      <option value="French" >French</option>
                                                       </select>
                                                       <div className="name1 errortext text-red-600" id="validname"> {errors["skills"]}  </div>
                                                       <label className="block mt-3 font-semibold">Image </label>
@@ -589,15 +628,18 @@ const[isshowsecuser,setIsshowsecuser] = useState(0)
                                    <input type="hidden" value={postfieldsedit['_id']} name="postid" />
                                    <label className="block mr-2 mt-3 mb-2 text-sm font-medium text-gray-900 dark:text-white">Upload</label>
                                      <input name='postimg' onChange={handleChangeFilePostedit} className="p-4 block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="file_input_help" id="file_input" type="file" />
-                                     <div className='flex mt-2 mx-2'>
+                                   {imgedt !== '' && (
+                                    <div className='flex mt-2 mx-2'>
                                                     <img src={`${baseUrl}${imgedt}`} height="50px" width="50px" />
                                                     <span className='mx-2'>{imgedt}</span>
-                                                        </div> 
+                                    </div> 
+
+                                   )}  
                                   </div>
                                  
                              
                     </div>
-                    <div tyle={{ backgroundColor: !showTheme  ? 'rgb(60, 60, 60)' : 'rgb(240, 240, 240)',}} className="text-right border-t">
+                    <div style={{ backgroundColor: !showTheme  ? 'rgb(60, 60, 60)' : 'rgb(240, 240, 240)',}} className="text-right border-t">
                             <button type="submit"  style={{ backgroundColor: !showTheme  ? '#ffffff' : '#0000ff',color: showTheme  ? '#ffffff' : '#757575'}} className=" md:w-40 mb-3  dark:bg-gray-100 dark:text-gray-800 font-bold py-3 px-6 rounded-lg mt-4 float-right hover:bg-gray-500 dark:hover:bg-gray-200 transition ease-in-out duration-300">Submit</button>
                           </div>
         
