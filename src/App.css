@@ -317,7 +317,7 @@
 
 .seclogin{
 
-  background-image: url("http://localhost:5002/Uploadimage/1.gif");
+  background-image: url("https://dashboardbackend.netlify.app/Uploadimage/1.gif");
   min-height: 400px;
   background-position:center;
   background-repeat: no-repeat;
