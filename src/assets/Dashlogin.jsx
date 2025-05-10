@@ -133,7 +133,7 @@ export default function Login() {
          }
            
                if(formIsValid){
-                                      fetch('http://localhost:5002/getuser', {
+                                      fetch('https://dashboardbackend.netlify.app/getuser', {
                                           method: 'POST',
                                           body: JSON.stringify(fields),
                                             headers: {
@@ -233,7 +233,7 @@ export default function Login() {
          else{
              if(formIsValid ){
                        
-                     fetch('http://localhost:5002/getloginuser', {
+                     fetch('https://dashboardbackend.netlify.app/getloginuser', {
                         method: 'POST',
                         body: JSON.stringify(formFields),
                           headers: {
