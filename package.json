@@ -4,12 +4,12 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+        "dev": "vite",     
+    "build": "vite build",    
+    "start": "serve -s dist"  ,
     "lint": "eslint .",
     "preview": "vite preview",
-    "remix vite:build": "remix build && vite build",
-    "start": "serve -s dist"
+    "remix vite:build": "remix build && vite build"
   },
   "dependencies": {
     "@emotion/styled": "^11.14.0",
