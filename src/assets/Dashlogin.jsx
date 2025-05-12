@@ -133,7 +133,7 @@ export default function Login() {
          }
            
                if(formIsValid){
-                                      fetch('https://dashboardbackend.netlify.app/getuser', {
+                                      fetch('http://localhost:5002/getuser', {
                                           method: 'POST',
                                           body: JSON.stringify(fields),
                                             headers: {
@@ -177,7 +177,7 @@ export default function Login() {
                                 // console.log(fields['image'])
                                 // console.log( formData)
 
-                                   fetch('http://localhost:5002/saveUser', {
+                                   fetch('https://dashboardbaclend.onrender.com/saveUser', {
                                        method: 'POST',
                                        body: formData
                                      })
@@ -233,7 +233,7 @@ export default function Login() {
          else{
              if(formIsValid ){
                        
-                     fetch('https://dashboardbackend.netlify.app/getloginuser', {
+                     fetch('https://dashboardbaclend.onrender.com/getloginuser', {
                         method: 'POST',
                         body: JSON.stringify(formFields),
                           headers: {
