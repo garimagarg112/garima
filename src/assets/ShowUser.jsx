@@ -398,7 +398,23 @@ const[isshowsecuser,setIsshowsecuser] = useState(0)
                                
                                </div>
 
-                               )}      
+                               )} 
+
+
+                                { latstpost.length === 0 && allpost.length === 0 && (
+                                   <div className=''>
+                                            <h1 className='text-blue-600 dark:text-white my-3 mx-5'>Today Highlights</h1>   
+                   
+                                    <div className='my-3 mrgn' >
+                                      <div className='dashitem p-3'>
+                                            <div className=' my-3 mx-5'>
+                                                <img src={`${baseUrl}p1.jpg`} className='imgpost' alt="" />
+                                            </div>
+                                            
+                                            </div>
+                                          </div>
+                                        </div> 
+                                )}
                     </div>
 
                   
