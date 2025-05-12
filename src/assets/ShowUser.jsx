@@ -352,7 +352,7 @@ const[isshowsecuser,setIsshowsecuser] = useState(0)
                                       <div className=''>
                                             <h1 className='text-blue-600 dark:text-white my-3 mx-5'>Today Highlights</h1>   
                    
-                                    <div className='my-3 mrgn' >
+                                    <div className='my-3 mrgn  dark:bg-gray-700' >
                                       <div className='dashitem p-3'>
                                             <div className=' my-3 mx-5'>
                                                 <img src={`${baseUrl}${latstpost[0]["image"]}`} className='imgpost' alt="" />
@@ -376,7 +376,7 @@ const[isshowsecuser,setIsshowsecuser] = useState(0)
                                 
                                  
                                 {   allpost.map((pst,i) => (
-                                      <div className='my-3 mrgn'  key={i}>
+                                      <div className='my-3 mrgn  dark:bg-gray-700'  key={i}>
                                           <div className='dashitem p-3'>
                                             <div className=' my-3 mx-5'>
                                                 <img src={`${baseUrl}${pst["image"]}`}  className='imgpost' alt="" />
@@ -405,7 +405,7 @@ const[isshowsecuser,setIsshowsecuser] = useState(0)
                                    <div className=''>
                                             <h1 className='text-blue-600 dark:text-white my-3 mx-5'>Today Highlights</h1>   
                    
-                                    <div className='my-3 mrgn' >
+                                    <div className='my-3 mrgn  dark:bg-gray-700' >
                                       <div className='dashitem p-3'>
                                             <div className=' my-3 mx-5'>
                                                 <img src={`${baseUrl}p1.jpg`} className='imgpost' alt="" />
@@ -456,7 +456,7 @@ const[isshowsecuser,setIsshowsecuser] = useState(0)
                                  //   editdata.post.length > 0 && (
                                  
                                   latstpost.map((pst,i) => (
-                                        <div className='my-3 mrgn'  key={i}>
+                                        <div className='my-3 mrgn  dark:bg-gray-700'  key={i}>
                                           <div className='dashitem p-3'>
                                             <div className=' my-3 mx-5'>
                                                 <img src={`${baseUrl}${pst["image"]}`}  className='imgpost' alt="" />
