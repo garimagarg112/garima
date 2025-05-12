@@ -8,7 +8,8 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "remix vite:build": "remix build && vite build"
+    "remix vite:build": "remix build && vite build",
+      "start": "serve -s dist"
   },
   "dependencies": {
     "@emotion/styled": "^11.14.0",
