@@ -370,7 +370,7 @@ const[isshowsecuser,setIsshowsecuser] = useState(0)
 
                                         <h6 className='mt-4 text-[20px] font-bold text-blue-600 dark:text-white'>Users Posts</h6>
                                 </div>  
-                                <div className='mt-4 rounded scrollusr  dark:bg-gray-700'>
+                                <div className={ allpost.length > 1 ? 'mt-4 rounded scrollusr  dark:bg-gray-700' : 'mt-4 rounded  dark:bg-gray-700'}>
                                    
                                   
                                 
