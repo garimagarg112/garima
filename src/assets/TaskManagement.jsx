@@ -486,7 +486,7 @@ export default function TaskManagement({productListnw,showTheme,userdata,setUser
                </div>
                <div className="flex">
                  <ul
-                   className="flex justify-center items-center gap-x-[10px] z-30"
+                   className="flex justify-center items-center gap-x-[10px]"
                    role="navigation"
                    aria-label="Pagination"
                  >
