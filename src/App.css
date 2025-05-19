@@ -324,6 +324,7 @@
   background-color: #3a7afe;
   background-blend-mode: soft-light;
   background-size: cover;
+  padding: 10px 0px;
 }
 
 .arglogin::before{
