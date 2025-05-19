@@ -303,7 +303,7 @@ export default function Login() {
             <div className='grid sm:grid-cols-1 lg:grid-cols-2 gap-10 m-8'  >
 
         <div className='seclogin rounded-4xl'>
-          <div className='px-10 py-12 text-center dashmrgntp'>
+          <div className='px-10 lg:py-12 md:py-10 text-center dashmrgntp'>
 
           <h6 className='text-white text-[30px] font-bold'>Log in to your admin dashboard <span className='block'>with your credentials</span></h6>
           <h1 className='text-white  text-[50px] font-extrabold'>The Dashboard</h1>
