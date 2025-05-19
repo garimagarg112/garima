@@ -271,7 +271,7 @@ export default function Users({showTheme,isshowdash,baseUrl,showdash}) {
                </div>
                <div className="flex">
                  <ul
-                   className="flex justify-center items-center gap-x-[10px] z-30"
+                   className="flex justify-center items-center gap-x-[10px]"
                    role="navigation"
                    aria-label="Pagination"
                  >
