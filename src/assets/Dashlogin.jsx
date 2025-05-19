@@ -300,7 +300,7 @@ export default function Login() {
            <div className="relative py-3 sm:w-96 mx-auto text-center">
           */}
           
-            <div className='grid grid-cols-2 sm:grid-cols-1 lg:grid-cols-2 gap-10 m-8'  >
+            <div className='grid sm:grid-cols-1 lg:grid-cols-2 gap-10 m-8'  >
 
         <div className='seclogin rounded-4xl'>
           <div className='px-10 py-12 text-center dashmrgntp'>
