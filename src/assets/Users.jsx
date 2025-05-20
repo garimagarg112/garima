@@ -339,8 +339,10 @@ export default function Users({showTheme,isshowdash,baseUrl,showdash}) {
                     { taskdata.name !==  undefined && (
                     <div style={{ backgroundColor: !showTheme  ? 'rgb(180, 180, 180)' : 'rgb(240, 240, 240)', color: showTheme  ? '#000000' : '#757575'}}  className="p-6 mr-2 my-4 flex flex-col items-center rounded-lg shadow-sm md:flex-row md:max-w-xl  dark:hover:bg-gray-700">
 
-                         
-                        <img className="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48  md:rounded-s-lg" src={`${baseUrl}${taskdata['image']}`} alt="" />
+                      <div className='md:w-sm'>
+                          <img className="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48  md:rounded-s-lg" src={`${baseUrl}${taskdata['image']}`} alt="" />
+                        </div>   
+                      
                         <div className="flex flex-col justify-between p-4 leading-normal">
                             <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{taskdata['name'].toUpperCase()}</h5>
                             <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Email: {taskdata['email']}</p>
