@@ -340,7 +340,7 @@ export default function Users({showTheme,isshowdash,baseUrl,showdash}) {
                     <div style={{ backgroundColor: !showTheme  ? 'rgb(180, 180, 180)' : 'rgb(240, 240, 240)', color: showTheme  ? '#000000' : '#757575'}}  className="p-6 mr-2 my-4 flex flex-col items-center rounded-lg shadow-sm md:flex-row md:max-w-xl  dark:hover:bg-gray-700">
 
                       <div className='md:w-sm'>
-                          <img className="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48  md:rounded-s-lg" src={`${baseUrl}${taskdata['image']}`} alt="" />
+                          <img className="object-cover lg:w-full rounded-t-lg lg:h-96 md:h-auto md:w-48  md:rounded-s-lg" src={`${baseUrl}${taskdata['image']}`} alt="" />
                         </div>   
                       
                         <div className="flex flex-col justify-between p-4 leading-normal">
